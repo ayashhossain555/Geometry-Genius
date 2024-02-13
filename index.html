@@ -13,22 +13,34 @@
 </head>
 <body class="m-8">
     <header>
-
+        <div class="navbar bg-base-100 mb-24">
+            <div class="navbar-start">
+              <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </div>
+              </div>
+              <a class="btn btn-ghost font-extrabold text-2xl">Geometry Genius</a>
+            </div>
+            <div class="navbar-end">
+              <a class="btn">Blog</a>
+            </div>
+          </div>
     </header>
     <main>
         <!-- Main Contents Container -->
-        <div class="flex flex-col md:flex-row">
+        <div class="flex flex-col md:flex-row gap-8">
             <!-- Shape Card Container -->
             <div class="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 <!-- Triange Card -->
-                <div class="card w-96 bg-base-100 shadow-xl">
+                <div class="card p-4 w-full bg-base-100 shadow-xl">
                     <figure><img src="./images/triangle.png" alt="Triangles" /></figure>
                     <div class="card-body text-center">
                       <h2 class="text-center text-xl font-bold">Triangle</h2>
                       <p>Area = 0.5 X b X h</p>
                       <div>
-                        <input id="tri-base" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="b"><span class="mr-4">cm</span>
-                        <input id="tri-height" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="h"><span>cm</span>
+                        <input id="tri-base" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="base"><span>cm</span>
+                        <input id="tri-height" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="height"><span>cm</span>
                       </div>
                       <div id="result" class="hidden font-bold">
                           <p class="text-xl">Area: <span id="tri-area"></span> <span>cm<sup>2</sup></span></p>
@@ -39,14 +51,14 @@
                     </div>
                   </div>
                 <!-- Rectangle Card -->
-                <div class="card w-96 bg-base-100 shadow-xl">
+                <div class="card p-4 w-full shadow-xl">
                     <figure><img src="./images/rectangle.png" alt="Rectangle"/></figure>
                     <div class="card-body text-center">
                       <h2 class="text-center text-xl font-bold">Rectangle</h2>
                       <p>Area = w X l</p>
                       <div>
-                        <input id="rec-width" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="w"><span class="mr-4">cm</span>
-                        <input id="rec-length" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="l"><span>cm</span>
+                        <input id="rec-width" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="width"><span>cm</span>
+                        <input id="rec-length" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="length"><span>cm</span>
                       </div>
                       <div id="result2" class="hidden font-bold">
                           <p class="text-xl">Area: <span id="rec-area"></span> <span>cm<sup>2</sup></span></p>
@@ -56,53 +68,109 @@
                       </div>
                     </div>
                   </div>
-                <!-- Triange Card -->
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                    <div class="card-body">
-                      <h2 class="card-title">Shoes!</h2>
-                      <p>If a dog chews shoes whose shoes does he choose?</p>
-                      <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
+                <!-- Parallelogram Card -->
+                <div class="card p-4 w-full bg-base-100 shadow-xl">
+                    <figure><img src="./images/parallelogram.png" alt="Rectangle"/></figure>
+                    <div class="card-body text-center">
+                      <h2 class="text-center text-xl font-bold">Parallelogram</h2>
+                      <p>Area = b X h</p>
+                      <div>
+                        <input id="para-base" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="base"><span>cm</span>
+                        <input id="para-height" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="height"><span>cm</span>
+                      </div>
+                      <div id="result3" class="hidden font-bold">
+                          <p class="text-xl">Area: <span id="para-area"></span> <span>cm<sup>2</sup></span></p>
+                      </div>
+                      <div class="card-actions">
+                        <button class="btn btn-primary w-full" onclick="calculateParallelogramArea()">Calculate</button>
                       </div>
                     </div>
                   </div>
-                <!-- Triange Card -->
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                    <div class="card-body">
-                      <h2 class="card-title">Shoes!</h2>
-                      <p>If a dog chews shoes whose shoes does he choose?</p>
-                      <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
+                <!-- Rhombus Card -->
+                <div class="card p-4 w-full bg-base-100 shadow-xl">
+                    <figure><img src="./images/rhombus.png" alt="Rhombus"/></figure>
+                    <div class="card-body text-center">
+                      <h2 class="text-center text-xl font-bold">Rhombus</h2>
+                      <p>Area = 0.5 X d1 X d2</p>
+                      <div>
+                        <input id="rhom-d1" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="d1"><span>cm</span>
+                        <input id="rhom-d2" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="d2"><span>cm</span>
+                      </div>
+                      <div id="result4" class="hidden font-bold">
+                          <p class="text-xl">Area: <span id="rhom-area"></span> <span>cm<sup>2</sup></span></p>
+                      </div>
+                      <div class="card-actions">
+                        <button class="btn btn-primary w-full" onclick="calculateRhombusArea()">Calculate</button>
                       </div>
                     </div>
                   </div>
-                <!-- Triange Card -->
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                    <div class="card-body">
-                      <h2 class="card-title">Shoes!</h2>
-                      <p>If a dog chews shoes whose shoes does he choose?</p>
-                      <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
+                <!-- Pentagon Card -->
+                <div class="card p-4 w-full bg-base-100 shadow-xl">
+                    <figure><img src="./images/pentagon.png" alt="Rectangle"/></figure>
+                    <div class="card-body text-center">
+                      <h2 class="text-center text-xl font-bold">Pentagon</h2>
+                      <p>Area = 0.5 X p X b</p>
+                      <div>
+                        <input id="pen-p" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="p"><span>cm</span>
+                        <input id="pen-b" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="b"><span>cm</span>
+                      </div>
+                      <div id="result5" class="hidden font-bold">
+                          <p class="text-xl">Area: <span id="pen-area"></span> <span>cm<sup>2</sup></span></p>
+                      </div>
+                      <div class="card-actions">
+                        <button class="btn btn-primary w-full" onclick="calculatePentagonArea()">Calculate</button>
                       </div>
                     </div>
                   </div>
+                <!-- Ellipse Card -->
+                <div class="card p-4 w-full bg-base-100 shadow-xl">
+                    <figure><img src="./images/ellipse.png" alt="Rectangle"/></figure>
+                    <div class="card-body text-center">
+                      <h2 class="text-center text-xl font-bold">Ellipse</h2>
+                      <p>Area = πab</p>
+                      <div>
+                        <input id="eli-a" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="a"><span>cm</span>
+                        <input id="eli-b" class="w-24 text-lg rounded-sm p-2" type="text" name="" id="" placeholder="b"><span>cm</span>
+                      </div>
+                      <div id="result6" class="hidden font-bold">
+                          <p class="text-xl">Area: <span id="eli-area"></span> <span>cm<sup>2</sup></span></p>
+                      </div>
+                      <div class="card-actions">
+                        <button class="btn btn-primary w-full" onclick="calculateEllipseArea()">Calculate</button>
+                      </div>
+                    </div>
+                  </div>
+                
             </div>
             <!-- Area Calculation Container -->
-            <div class="w-96 border-2 border-grey-700 rounded-md">
+            <div class="w-58 md:w-78 lg:w-96 border-2 border-grey-700 rounded-md">
                 <h3 class="text-3xl text-center p-4">Area Calculation</h3>
             </div>
         </div>
     </main>
     <footer>
-
+        <footer class="footer footer-center p-10 bg-base-200 text-base-content rounded">
+            <nav class="grid grid-flow-col gap-4">
+              <a class="link link-hover">About us</a>
+              <a class="link link-hover">Contact</a>
+              <a class="link link-hover">Jobs</a>
+              <a class="link link-hover">Press kit</a>
+            </nav> 
+            <nav>
+              <div class="grid grid-flow-col gap-4">
+                <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a>
+                <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg></a>
+                <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
+              </div>
+            </nav> 
+            <aside>
+              <p>Copyright © 2024 - All right reserved by Geometry Genius</p>
+            </aside>
+          </footer>
     </footer>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./assets/geometry.js"></script>
     <script>
-
     </script>
 </body>
 </html>
